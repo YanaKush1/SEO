@@ -1461,6 +1461,109 @@ window.showCaseDetails = function(caseId) {
       });
     }, 100);
   }
+  if (caseId === 5) {
+    document.getElementById('case-modal-5').classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+    setTimeout(function() {
+      // График 1: Количество ключей в ТОП-10 (шт.)
+      var top10Chart = echarts.init(document.getElementById('case5-top10-chart'));
+      top10Chart.setOption({
+        backgroundColor: '#101010',
+        tooltip: { trigger: 'axis' },
+        xAxis: {
+          type: 'category',
+          data: ['Апр', 'Май', 'Июн', 'Июл', 'Авг'],
+          axisLine: { lineStyle: { color: '#333' } },
+          axisLabel: { color: '#fff' }
+        },
+        yAxis: {
+          type: 'value',
+          min: 0,
+          max: 60,
+          name: 'шт.',
+          axisLine: { lineStyle: { color: '#333' } },
+          splitLine: { lineStyle: { color: '#222' } },
+          axisLabel: { color: '#fff' }
+        },
+        series: [{
+          name: 'ТОП-10',
+          type: 'line',
+          smooth: true,
+          symbol: 'circle',
+          symbolSize: 8,
+          itemStyle: { color: '#0057FF' },
+          lineStyle: { color: '#0057FF', width: 4 },
+          areaStyle: { color: 'rgba(0,87,255,0.08)' },
+          data: [25, 30, 36, 44, 50]
+        }]
+      });
+      // График 2: Средняя позиция по запросам (позиция)
+      var avgPosChart = echarts.init(document.getElementById('case5-avgpos-chart'));
+      avgPosChart.setOption({
+        backgroundColor: '#101010',
+        tooltip: { trigger: 'axis' },
+        xAxis: {
+          type: 'category',
+          data: ['Апр', 'Май', 'Июн', 'Июл', 'Авг'],
+          axisLine: { lineStyle: { color: '#333' } },
+          axisLabel: { color: '#fff' }
+        },
+        yAxis: {
+          type: 'value',
+          min: 10,
+          max: 40,
+          inverse: true,
+          name: 'позиция',
+          axisLine: { lineStyle: { color: '#333' } },
+          splitLine: { lineStyle: { color: '#222' } },
+          axisLabel: { color: '#fff' }
+        },
+        series: [{
+          name: 'Средняя позиция',
+          type: 'line',
+          smooth: true,
+          symbol: 'circle',
+          symbolSize: 8,
+          itemStyle: { color: '#FFBD2E' },
+          lineStyle: { color: '#FFBD2E', width: 4 },
+          areaStyle: { color: 'rgba(255,189,46,0.08)' },
+          data: [32, 28, 24, 18, 14]
+        }]
+      });
+      // График 3: Рост поискового трафика (чел/неделя)
+      var trafficChart = echarts.init(document.getElementById('case5-traffic-chart'));
+      trafficChart.setOption({
+        backgroundColor: '#101010',
+        tooltip: { trigger: 'axis' },
+        xAxis: {
+          type: 'category',
+          data: ['Апр', 'Май', 'Июн', 'Июл', 'Авг'],
+          axisLine: { lineStyle: { color: '#333' } },
+          axisLabel: { color: '#fff' }
+        },
+        yAxis: {
+          type: 'value',
+          min: 0,
+          max: 400,
+          name: 'чел/неделя',
+          axisLine: { lineStyle: { color: '#333' } },
+          splitLine: { lineStyle: { color: '#222' } },
+          axisLabel: { color: '#fff' }
+        },
+        series: [{
+          name: 'Трафик',
+          type: 'line',
+          smooth: true,
+          symbol: 'circle',
+          symbolSize: 8,
+          itemStyle: { color: '#4CAF50' },
+          lineStyle: { color: '#4CAF50', width: 4 },
+          areaStyle: { color: 'rgba(76,175,80,0.08)' },
+          data: [200, 240, 270, 310, 350]
+        }]
+      });
+    }, 200);
+  }
 }
 </script>
 
@@ -1776,6 +1879,29 @@ document.addEventListener('DOMContentLoaded', function() {
       <div>
         <h3 class="text-xl font-semibold mb-2 text-white">Рост органического трафика</h3>
         <div id="case6-traffic-chart" class="w-full h-64 bg-black rounded-lg"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Модальное окно для пятого кейса -->
+<div id="case-modal-5" class="fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center hidden">
+  <div class="bg-[#0D0D0D] p-8 rounded-xl max-w-4xl w-full mx-4 relative overflow-y-auto max-h-[90vh]">
+    <button class="absolute top-4 right-4 text-gray-400 hover:text-white" onclick="document.getElementById('case-modal-5').classList.add('hidden');document.body.style.overflow='';">
+      <i class="ri-close-line ri-2x"></i>
+    </button>
+    <h2 class="text-3xl font-bold mb-8 text-center text-[#FF6B3A]">Ремонт техники Apple</h2>
+    <div class="space-y-10">
+      <div>
+        <h3 class="text-xl font-semibold mb-2 text-white">Количество ключей в ТОП-10 (шт.)</h3>
+        <div id="case5-top10-chart" class="w-full h-64 bg-black rounded-lg"></div>
+      </div>
+      <div>
+        <h3 class="text-xl font-semibold mb-2 text-white">Средняя позиция по запросам (позиция)</h3>
+        <div id="case5-avgpos-chart" class="w-full h-64 bg-black rounded-lg"></div>
+      </div>
+      <div>
+        <h3 class="text-xl font-semibold mb-2 text-white">Рост поискового трафика (чел/неделя)</h3>
+        <div id="case5-traffic-chart" class="w-full h-64 bg-black rounded-lg"></div>
       </div>
     </div>
   </div>
