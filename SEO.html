@@ -1564,6 +1564,77 @@ window.showCaseDetails = function(caseId) {
       });
     }, 200);
   }
+  if (caseId === 7) {
+    document.getElementById('case-modal-7').classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+    setTimeout(function() {
+      // График 1: Средняя позиция по запросам (позиция)
+      var avgPosChart = echarts.init(document.getElementById('case7-avgpos-chart'));
+      avgPosChart.setOption({
+        backgroundColor: '#101010',
+        tooltip: { trigger: 'axis' },
+        xAxis: {
+          type: 'category',
+          data: ['Май', 'Июл', 'Сен', 'Ноя', 'Янв', 'Мар', 'Май'],
+          axisLine: { lineStyle: { color: '#333' } },
+          axisLabel: { color: '#fff' }
+        },
+        yAxis: {
+          type: 'value',
+          min: 0,
+          max: 110,
+          inverse: true,
+          name: 'позиция',
+          axisLine: { lineStyle: { color: '#333' } },
+          splitLine: { lineStyle: { color: '#222' } },
+          axisLabel: { color: '#fff' }
+        },
+        series: [{
+          name: 'Средняя позиция',
+          type: 'line',
+          smooth: true,
+          symbol: 'circle',
+          symbolSize: 8,
+          itemStyle: { color: '#FFBD2E' },
+          lineStyle: { color: '#FFBD2E', width: 4 },
+          areaStyle: { color: 'rgba(255,189,46,0.08)' },
+          data: [100, 70, 40, 25, 15, 10, 8]
+        }]
+      });
+      // График 2: Рост поискового трафика (чел/неделя)
+      var trafficChart = echarts.init(document.getElementById('case7-traffic-chart'));
+      trafficChart.setOption({
+        backgroundColor: '#101010',
+        tooltip: { trigger: 'axis' },
+        xAxis: {
+          type: 'category',
+          data: ['Май', 'Июл', 'Сен', 'Ноя', 'Янв', 'Мар', 'Май'],
+          axisLine: { lineStyle: { color: '#333' } },
+          axisLabel: { color: '#fff' }
+        },
+        yAxis: {
+          type: 'value',
+          min: 0,
+          max: 300,
+          name: 'чел/неделя',
+          axisLine: { lineStyle: { color: '#333' } },
+          splitLine: { lineStyle: { color: '#222' } },
+          axisLabel: { color: '#fff' }
+        },
+        series: [{
+          name: 'Трафик',
+          type: 'line',
+          smooth: true,
+          symbol: 'circle',
+          symbolSize: 8,
+          itemStyle: { color: '#4CAF50' },
+          lineStyle: { color: '#4CAF50', width: 4 },
+          areaStyle: { color: 'rgba(76,175,80,0.08)' },
+          data: [12, 30, 60, 90, 120, 180, 250]
+        }]
+      });
+    }, 200);
+  }
 }
 </script>
 
@@ -1902,6 +1973,25 @@ document.addEventListener('DOMContentLoaded', function() {
       <div>
         <h3 class="text-xl font-semibold mb-2 text-white">Рост поискового трафика (чел/неделя)</h3>
         <div id="case5-traffic-chart" class="w-full h-64 bg-black rounded-lg"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Модальное окно для седьмого кейса (строительство домов и бань из бруса) -->
+<div id="case-modal-7" class="fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center hidden">
+  <div class="bg-[#0D0D0D] p-8 rounded-xl max-w-4xl w-full mx-4 relative overflow-y-auto max-h-[90vh]">
+    <button class="absolute top-4 right-4 text-gray-400 hover:text-white" onclick="document.getElementById('case-modal-7').classList.add('hidden');document.body.style.overflow='';">
+      <i class="ri-close-line ri-2x"></i>
+    </button>
+    <h2 class="text-3xl font-bold mb-8 text-center text-[#FF6B3A]">Строительство домов и бань из бруса</h2>
+    <div class="space-y-10">
+      <div>
+        <h3 class="text-xl font-semibold mb-2 text-white">Средняя позиция по запросам (позиция)</h3>
+        <div id="case7-avgpos-chart" class="w-full h-64 bg-black rounded-lg"></div>
+      </div>
+      <div>
+        <h3 class="text-xl font-semibold mb-2 text-white">Рост поискового трафика (чел/неделя)</h3>
+        <div id="case7-traffic-chart" class="w-full h-64 bg-black rounded-lg"></div>
       </div>
     </div>
   </div>
