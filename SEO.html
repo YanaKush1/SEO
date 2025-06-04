@@ -1458,6 +1458,29 @@ window.showCaseDetails = function(caseId) {
     </form>
   </div>
 </div>
+<!-- Модальное окно для четвертого кейса -->
+<div id="case-modal-4" class="fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center hidden">
+  <div class="bg-[#0D0D0D] p-8 rounded-xl max-w-4xl w-full mx-4 relative overflow-y-auto max-h-[90vh]">
+    <button class="absolute top-4 right-4 text-gray-400 hover:text-white" onclick="document.getElementById('case-modal-4').classList.add('hidden');document.body.style.overflow='';">
+      <i class="ri-close-line ri-2x"></i>
+    </button>
+    <h2 class="text-3xl font-bold mb-8 text-center text-[#FF6B3A]">Производство стальных резервуаров</h2>
+    <div class="space-y-10">
+      <div>
+        <h3 class="text-xl font-semibold mb-2 text-white">Рост видимости (индекс)</h3>
+        <div id="case4-visibility-chart" class="w-full h-64 bg-black rounded-lg"></div>
+      </div>
+      <div>
+        <h3 class="text-xl font-semibold mb-2 text-white">Посещаемость из поисковых систем (чел/мес)</h3>
+        <div id="case4-traffic-chart" class="w-full h-64 bg-black rounded-lg"></div>
+      </div>
+      <div>
+        <h3 class="text-xl font-semibold mb-2 text-white">ТОП-10 по целевым группам (кол-во запросов)</h3>
+        <div id="case4-top10-chart" class="w-full h-64 bg-black rounded-lg"></div>
+      </div>
+    </div>
+  </div>
+</div>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   // Кнопка "Хочу персональный расчет" и модалка
@@ -1541,6 +1564,43 @@ document.addEventListener('DOMContentLoaded', function() {
     if (slider) slider.addEventListener('input', recalc);
   });
   recalc();
+
+  var btn4 = document.querySelector('[data-case-id="4"]');
+  if (btn4) {
+    btn4.addEventListener('click', function() {
+      document.getElementById('case-modal-4').classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      setTimeout(function() {
+        // График 1: Рост видимости (примерные данные)
+        var visChart = echarts.init(document.getElementById('case4-visibility-chart'));
+        visChart.setOption({
+          backgroundColor: '#101010',
+          tooltip: { trigger: 'axis' },
+          xAxis: { type: 'category', data: ['Янв', 'Мар', 'Май', 'Июль', 'Сен', 'Ноя', 'Янв', 'Мар'], axisLine: { lineStyle: { color: '#333' } }, axisLabel: { color: '#fff' } },
+          yAxis: { type: 'value', name: 'Индекс', axisLine: { lineStyle: { color: '#333' } }, splitLine: { lineStyle: { color: '#222' } }, axisLabel: { color: '#fff' } },
+          series: [{ name: 'Видимость', type: 'line', smooth: true, symbol: 'circle', symbolSize: 8, itemStyle: { color: '#FFBD2E' }, lineStyle: { color: '#FFBD2E', width: 4 }, areaStyle: { color: 'rgba(255,189,46,0.08)' }, data: [10, 20, 30, 40, 50, 60, 70, 85] }]
+        });
+        // График 2: Посещаемость (примерные данные)
+        var trafficChart = echarts.init(document.getElementById('case4-traffic-chart'));
+        trafficChart.setOption({
+          backgroundColor: '#101010',
+          tooltip: { trigger: 'axis' },
+          xAxis: { type: 'category', data: ['Янв', 'Мар', 'Май', 'Июль', 'Сен', 'Ноя', 'Янв', 'Мар'], axisLine: { lineStyle: { color: '#333' } }, axisLabel: { color: '#fff' } },
+          yAxis: { type: 'value', name: 'Чел/мес', axisLine: { lineStyle: { color: '#333' } }, splitLine: { lineStyle: { color: '#222' } }, axisLabel: { color: '#fff' } },
+          series: [{ name: 'Трафик', type: 'line', smooth: true, symbol: 'circle', symbolSize: 8, itemStyle: { color: '#4CAF50' }, lineStyle: { color: '#4CAF50', width: 4 }, areaStyle: { color: 'rgba(76,175,80,0.08)' }, data: [90, 120, 180, 250, 350, 420, 500, 550] }]
+        });
+        // График 3: ТОП-10 по группам (примерные данные)
+        var top10Chart = echarts.init(document.getElementById('case4-top10-chart'));
+        top10Chart.setOption({
+          backgroundColor: '#101010',
+          tooltip: { trigger: 'axis' },
+          xAxis: { type: 'category', data: ['Группа 1', 'Группа 2', 'Группа 3', 'Группа 4', 'Группа 5', 'Группа 6'], axisLine: { lineStyle: { color: '#333' } }, axisLabel: { color: '#fff' } },
+          yAxis: { type: 'value', name: 'Запросов', axisLine: { lineStyle: { color: '#333' } }, splitLine: { lineStyle: { color: '#222' } }, axisLabel: { color: '#fff' } },
+          series: [{ name: 'ТОП-10', type: 'bar', itemStyle: { color: '#0057FF' }, data: [60, 53, 48, 40, 35, 30] }]
+        });
+      }, 200);
+    });
+  }
 });
 </script>
 
