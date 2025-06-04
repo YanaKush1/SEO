@@ -669,6 +669,15 @@ background: linear-gradient(90deg, #000 0%, transparent 50%);
 </div>
 </div>
 </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section class="py-24" id="contact">
 <div class="container mx-auto px-4">
@@ -819,6 +828,50 @@ window.showCaseDetails = function(caseId) {
           areaStyle: { color: 'rgba(0,87,255,0.08)' },
           data: [3, 5, 7, 18, 31]
         }]
+      });
+      // Выросла посещаемость из поисковых систем
+      var trafficChart = echarts.init(document.getElementById('case1-traffic-chart'));
+      trafficChart.setOption({
+        backgroundColor: '#101010',
+        tooltip: { trigger: 'axis' },
+        xAxis: { type: 'category', data: ['Дек 20', 'Янв 21', 'Фев 21', 'Мар 21', 'Апр 21'], axisLine: { lineStyle: { color: '#333' } }, axisLabel: { color: '#fff' } },
+        yAxis: { type: 'value', min: 20, max: 50, axisLine: { lineStyle: { color: '#333' } }, splitLine: { lineStyle: { color: '#222' } }, axisLabel: { color: '#fff' } },
+        series: [{ name: 'Трафик', type: 'line', smooth: true, symbol: 'circle', symbolSize: 8, itemStyle: { color: '#00C9A7' }, lineStyle: { color: '#00C9A7', width: 4 }, areaStyle: { color: 'rgba(0,201,167,0.08)' }, data: [25, 28, 24, 35, 46] }]
+      });
+      // Увеличилось количество ссылающихся доменов
+      var domainsChart = echarts.init(document.getElementById('case1-domains-chart'));
+      domainsChart.setOption({
+        backgroundColor: '#101010',
+        tooltip: { trigger: 'axis' },
+        legend: { data: ['Новые', 'Потеряно'], textStyle: { color: '#fff' } },
+        xAxis: {
+          type: 'category',
+          data: ['19 Окт', '2 Ноя', '16 Ноя', '30 Ноя', '14 Дек', '28 Дек', '11 Янв', '25 Янв', '8 Фев', '22 Фев', '8 Мар', '22 Мар', '12 Апр'],
+          axisLine: { lineStyle: { color: '#333' } },
+          axisLabel: { color: '#fff', rotate: 40 }
+        },
+        yAxis: {
+          type: 'value',
+          axisLine: { lineStyle: { color: '#333' } },
+          splitLine: { lineStyle: { color: '#222' } },
+          axisLabel: { color: '#fff' }
+        },
+        series: [
+          {
+            name: 'Новые',
+            type: 'bar',
+            stack: 'total',
+            itemStyle: { color: '#00C9A7' },
+            data: [20, 25, 18, 22, 30, 60, 28, 24, 26, 32, 30, 28, 35]
+          },
+          {
+            name: 'Потеряно',
+            type: 'bar',
+            stack: 'total',
+            itemStyle: { color: '#FF6B3A' },
+            data: [-5, -8, -6, -7, -10, -18, -8, -6, -7, -9, -8, -7, -10]
+          }
+        ]
       });
     }, 200);
   }
