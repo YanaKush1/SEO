@@ -960,6 +960,7 @@ window.showCaseDetails = function(caseId) {
           type: 'value',
           min: 0,
           max: 60,
+          name: 'Индекс',
           axisLine: { lineStyle: { color: '#333' } },
           splitLine: { lineStyle: { color: '#222' } },
           axisLabel: { color: '#fff' }
@@ -991,6 +992,7 @@ window.showCaseDetails = function(caseId) {
           type: 'value',
           min: 0,
           max: 35,
+          name: '%',
           axisLine: { lineStyle: { color: '#333' } },
           splitLine: { lineStyle: { color: '#222' } },
           axisLabel: { color: '#fff', formatter: '{value}%'}
@@ -1013,7 +1015,7 @@ window.showCaseDetails = function(caseId) {
         backgroundColor: '#101010',
         tooltip: { trigger: 'axis' },
         xAxis: { type: 'category', data: ['Дек 20', 'Янв 21', 'Фев 21', 'Мар 21', 'Апр 21'], axisLine: { lineStyle: { color: '#333' } }, axisLabel: { color: '#fff' } },
-        yAxis: { type: 'value', min: 20, max: 50, axisLine: { lineStyle: { color: '#333' } }, splitLine: { lineStyle: { color: '#222' } }, axisLabel: { color: '#fff' } },
+        yAxis: { type: 'value', min: 20, max: 50, name: 'Чел/мес', axisLine: { lineStyle: { color: '#333' } }, splitLine: { lineStyle: { color: '#222' } }, axisLabel: { color: '#fff' } },
         series: [{ name: 'Трафик', type: 'line', smooth: true, symbol: 'circle', symbolSize: 8, itemStyle: { color: '#00C9A7' }, lineStyle: { color: '#00C9A7', width: 4 }, areaStyle: { color: 'rgba(0,201,167,0.08)' }, data: [25, 28, 24, 35, 46] }]
       });
       // Увеличилось количество ссылающихся доменов
@@ -1074,6 +1076,7 @@ window.showCaseDetails = function(caseId) {
           min: 0,
           max: 40,
           inverse: true,
+          name: 'Позиция',
           axisLine: { lineStyle: { color: '#333' } },
           splitLine: { lineStyle: { color: '#222' } },
           axisLabel: { color: '#fff' }
@@ -1105,6 +1108,7 @@ window.showCaseDetails = function(caseId) {
           type: 'value',
           min: 0,
           max: 60,
+          name: '%',
           axisLine: { lineStyle: { color: '#333' } },
           splitLine: { lineStyle: { color: '#222' } },
           axisLabel: { color: '#fff', formatter: '{value}%'}
@@ -1136,6 +1140,7 @@ window.showCaseDetails = function(caseId) {
           type: 'value',
           min: 0,
           max: 40,
+          name: '%',
           axisLine: { lineStyle: { color: '#333' } },
           splitLine: { lineStyle: { color: '#222' } },
           axisLabel: { color: '#fff', formatter: '{value}%'}
@@ -1167,6 +1172,7 @@ window.showCaseDetails = function(caseId) {
           type: 'value',
           min: 0,
           max: 7000,
+          name: 'Чел/мес',
           axisLine: { lineStyle: { color: '#333' } },
           splitLine: { lineStyle: { color: '#222' } },
           axisLabel: { color: '#fff' }
@@ -1199,6 +1205,7 @@ window.showCaseDetails = function(caseId) {
           min: 15,
           max: 40,
           inverse: true,
+          name: 'Позиция',
           axisLine: { lineStyle: { color: '#333' } },
           splitLine: { lineStyle: { color: '#222' } },
           axisLabel: { color: '#fff' }
@@ -1237,6 +1244,7 @@ window.showCaseDetails = function(caseId) {
           min: 20,
           max: 100,
           inverse: true,
+          name: 'Позиция',
           axisLine: { lineStyle: { color: '#333' } },
           splitLine: { lineStyle: { color: '#222' } },
           axisLabel: { color: '#fff' }
@@ -1268,6 +1276,7 @@ window.showCaseDetails = function(caseId) {
           type: 'value',
           min: 0,
           max: 60,
+          name: '%',
           axisLine: { lineStyle: { color: '#333' } },
           splitLine: { lineStyle: { color: '#222' } },
           axisLabel: { color: '#fff', formatter: '{value}%' }
@@ -1294,6 +1303,7 @@ window.showCaseDetails = function(caseId) {
           type: 'value',
           min: 0,
           max: 600,
+          name: 'Чел/мес',
           axisLine: { lineStyle: { color: '#333' } },
           splitLine: { lineStyle: { color: '#222' } },
           axisLabel: { color: '#fff' }
