@@ -666,6 +666,9 @@ background: linear-gradient(90deg, #000 0%, transparent 50%);
 </div>
 </div>
 </div>
+</div>
+</div>
+</div>
 </section>
 <section class="py-24" id="contact">
 <div class="container mx-auto px-4">
@@ -865,55 +868,133 @@ window.showCaseDetails = function(caseId) {
     </div>
   </div>
 </div>
+<!-- Модальное окно формы калькулятора -->
+<div id="calc-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+  <div class="bg-[#0D0D0D] p-8 rounded-xl max-w-6xl w-full mx-4 relative">
+    <button class="absolute top-4 right-4 text-gray-400 hover:text-white" id="close-calc-modal">
+      <i class="ri-close-line ri-2x"></i>
+    </button>
+    <h3 class="text-2xl font-bold mb-6 text-center">Получите персональный расчет</h3>
+    <form id="calc-contact-form" class="space-y-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+        <div class="relative">
+          <input type="text" id="calc-name" class="peer w-full px-0 py-3 text-white bg-transparent border-b-2 border-white/20 focus:border-primary focus:outline-none transition-all placeholder-transparent" placeholder="Ваше имя" required>
+          <label for="calc-name" class="absolute left-0 -top-6 text-sm text-white/60 peer-placeholder-shown:text-base peer-placeholder-shown:text-white/40 peer-placeholder-shown:top-3 peer-focus:-top-6 peer-focus:text-sm peer-focus:text-primary transition-all">Ваше имя</label>
+        </div>
+        <div class="relative">
+          <input type="email" id="calc-email" class="peer w-full px-0 py-3 text-white bg-transparent border-b-2 border-white/20 focus:border-primary focus:outline-none transition-all placeholder-transparent" placeholder="Email" required>
+          <label for="calc-email" class="absolute left-0 -top-6 text-sm text-white/60 peer-placeholder-shown:text-base peer-placeholder-shown:text-white/40 peer-placeholder-shown:top-3 peer-focus:-top-6 peer-focus:text-sm peer-focus:text-primary transition-all">Email</label>
+        </div>
+        <div class="relative">
+          <input type="tel" id="calc-phone" class="peer w-full px-0 py-3 text-white bg-transparent border-b-2 border-white/20 focus:border-primary focus:outline-none transition-all placeholder-transparent" placeholder="Телефон" required>
+          <label for="calc-phone" class="absolute left-0 -top-6 text-sm text-white/60 peer-placeholder-shown:text-base peer-placeholder-shown:text-white/40 peer-placeholder-shown:top-3 peer-focus:-top-6 peer-focus:text-sm peer-focus:text-primary transition-all">Телефон</label>
+        </div>
+        <div class="relative">
+          <input type="text" id="calc-company" class="peer w-full px-0 py-3 text-white bg-transparent border-b-2 border-white/20 focus:border-primary focus:outline-none transition-all placeholder-transparent" placeholder="Сайт / Компания" required>
+          <label for="calc-company" class="absolute left-0 -top-6 text-sm text-white/60 peer-placeholder-shown:text-base peer-placeholder-shown:text-white/40 peer-placeholder-shown:top-3 peer-focus:-top-6 peer-focus:text-sm peer-focus:text-primary transition-all">Сайт / Компания</label>
+        </div>
+      </div>
+      <div class="flex items-center space-x-3 mt-8">
+        <div class="relative">
+          <input type="checkbox" id="calc-terms" class="peer sr-only" required>
+          <div class="w-5 h-5 border-2 border-white/20 peer-checked:border-primary peer-checked:bg-primary rounded transition-all"></div>
+          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white opacity-0 peer-checked:opacity-100 transition-opacity">
+            <i class="ri-check-line text-sm"></i>
+          </div>
+        </div>
+        <label for="calc-terms" class="text-sm text-white/60">Я согласен на обработку персональных данных</label>
+      </div>
+      <div class="mt-12 text-center">
+        <button type="submit" class="inline-flex items-center justify-center bg-primary hover:bg-blue-600 text-white font-medium py-4 px-12 !rounded-button transition-all whitespace-nowrap group">
+          <span class="mr-2">ОТПРАВИТЬ</span>
+          <i class="ri-arrow-right-line transition-transform group-hover:translate-x-1"></i>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // Слайдеры
-  const keywordsSlider = document.getElementById('keywords-slider');
-  const trafficSlider = document.getElementById('traffic-slider');
-  const conversionSlider = document.getElementById('conversion-slider');
-  const checkSlider = document.getElementById('check-slider');
-  // Значения
-  const keywordsValue = document.getElementById('keywords-value');
-  const trafficValue = document.getElementById('traffic-value');
-  const conversionValue = document.getElementById('conversion-value');
-  const checkValue = document.getElementById('check-value');
-  // Результаты
-  const trafficGrowth = document.getElementById('traffic-growth');
-  const clientsGrowth = document.getElementById('clients-growth');
-  const revenueGrowth = document.getElementById('revenue-growth');
-  const seoSavings = document.getElementById('seo-savings');
+  // Кнопка "Хочу персональный расчет" и модалка
+  var calcBtn = document.getElementById('calc-form-btn');
+  var calcModal = document.getElementById('calc-modal');
+  var closeCalcModal = document.getElementById('close-calc-modal');
+  var calcForm = document.getElementById('calc-contact-form');
+  if (calcBtn && calcModal) {
+    calcBtn.addEventListener('click', function() {
+      calcModal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    });
+  }
+  if (closeCalcModal) {
+    closeCalcModal.addEventListener('click', function() {
+      calcModal.classList.add('hidden');
+      document.body.style.overflow = '';
+    });
+  }
+  if (calcForm) {
+    calcForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      calcModal.classList.add('hidden');
+      document.body.style.overflow = '';
+      alert('Спасибо! Ваша заявка отправлена.');
+      calcForm.reset();
+    });
+  }
+  // Кнопка "Рассчитать выгоду" скроллит к калькулятору
+  var scrollBtn = document.getElementById('calculate-btn');
+  if (scrollBtn) {
+    scrollBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      var calcSection = document.getElementById('calculator');
+      if (calcSection) {
+        calcSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  }
+
+  // === Калькулятор: обработка слайдеров и пересчёт ===
+  var keywordsSlider = document.getElementById('keywords-slider');
+  var trafficSlider = document.getElementById('traffic-slider');
+  var conversionSlider = document.getElementById('conversion-slider');
+  var checkSlider = document.getElementById('check-slider');
+  var keywordsValue = document.getElementById('keywords-value');
+  var trafficValue = document.getElementById('traffic-value');
+  var conversionValue = document.getElementById('conversion-value');
+  var checkValue = document.getElementById('check-value');
+  var trafficGrowth = document.getElementById('traffic-growth');
+  var clientsGrowth = document.getElementById('clients-growth');
+  var revenueGrowth = document.getElementById('revenue-growth');
+  var seoSavings = document.getElementById('seo-savings');
 
   function formatNumber(num) {
     return num.toLocaleString('ru-RU');
   }
 
   function recalc() {
-    const keywords = +keywordsSlider.value;
-    const traffic = +trafficSlider.value;
-    const conversion = +conversionSlider.value;
-    const check = +checkSlider.value;
-
-    keywordsValue.textContent = formatNumber(keywords);
-    trafficValue.textContent = formatNumber(traffic);
-    conversionValue.textContent = conversion.toFixed(1) + '%';
-    checkValue.textContent = formatNumber(check) + ' ₽';
-
+    if (!keywordsSlider || !trafficSlider || !conversionSlider || !checkSlider) return;
+    var keywords = +keywordsSlider.value;
+    var traffic = +trafficSlider.value;
+    var conversion = +conversionSlider.value;
+    var check = +checkSlider.value;
+    if (keywordsValue) keywordsValue.textContent = formatNumber(keywords);
+    if (trafficValue) trafficValue.textContent = formatNumber(traffic);
+    if (conversionValue) conversionValue.textContent = conversion.toFixed(1) + '%';
+    if (checkValue) checkValue.textContent = formatNumber(check) + ' ₽';
     // Примерные формулы (замените на свои)
-    const newTraffic = Math.round(traffic * 1.5);
-    const newClients = Math.round(newTraffic * (conversion / 100));
-    const newRevenue = newClients * check;
-    const savings = Math.round(newRevenue * 0.04);
-
-    trafficGrowth.textContent = '+' + formatNumber(newTraffic - traffic) + ' посетителей';
-    clientsGrowth.textContent = '+' + formatNumber(newClients) + ' клиентов';
-    revenueGrowth.textContent = '+' + formatNumber(newRevenue) + ' ₽';
-    seoSavings.textContent = '+' + formatNumber(savings) + ' ₽';
+    var newTraffic = Math.round(traffic * 1.5);
+    var newClients = Math.round(newTraffic * (conversion / 100));
+    var newRevenue = newClients * check;
+    var savings = Math.round(newRevenue * 0.04);
+    if (trafficGrowth) trafficGrowth.textContent = '+' + formatNumber(newTraffic - traffic) + ' посетителей';
+    if (clientsGrowth) clientsGrowth.textContent = '+' + formatNumber(newClients) + ' клиентов';
+    if (revenueGrowth) revenueGrowth.textContent = '+' + formatNumber(newRevenue) + ' ₽';
+    if (seoSavings) seoSavings.textContent = '+' + formatNumber(savings) + ' ₽';
   }
 
-  [keywordsSlider, trafficSlider, conversionSlider, checkSlider].forEach(slider => {
-    slider.addEventListener('input', recalc);
+  [keywordsSlider, trafficSlider, conversionSlider, checkSlider].forEach(function(slider) {
+    if (slider) slider.addEventListener('input', recalc);
   });
-
   recalc();
 });
 </script>
