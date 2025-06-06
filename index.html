@@ -176,20 +176,30 @@ outline: none;
 .calculator-slider::-webkit-slider-thumb {
 -webkit-appearance: none;
 appearance: none;
-width: 18px;
-height: 18px;
+width: 24px;
+height: 24px;
 border-radius: 50%;
 background: #FF4B1A;
 cursor: pointer;
 box-shadow: 0 0 10px rgba(255, 75, 26, 0.8);
 }
 .calculator-slider::-moz-range-thumb {
-width: 18px;
-height: 18px;
+width: 24px;
+height: 24px;
 border-radius: 50%;
 background: #0057FF;
 cursor: pointer;
 box-shadow: 0 0 10px rgba(0, 87, 255, 0.8);
+}
+@media (min-width: 768px) {
+.calculator-slider::-webkit-slider-thumb {
+width: 18px;
+height: 18px;
+}
+.calculator-slider::-moz-range-thumb {
+width: 18px;
+height: 18px;
+}
 }
 .form-input {
 background-color: rgba(5, 15, 45, 0.5);
@@ -415,71 +425,71 @@ background: linear-gradient(90deg, #000 0%, transparent 50%);
 </div>
 </div>
 </section>
-<section class="py-16" id="calculator">
+<section class="py-8 md:py-16" id="calculator">
 <div class="container mx-auto px-4">
-<h2 class="text-5xl font-bold mb-12 text-center">Калькулятор выгоды</h2>
-<div class="max-w-6xl mx-auto bg-opacity-30 p-16 rounded-xl grid grid-cols-1 lg:grid-cols-2 gap-8 backdrop-blur-md border border-primary/10" style="background: linear-gradient(135deg, rgba(18,18,18,0.95) 0%, rgba(5,15,45,0.9) 100%); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);">
-<div class="space-y-8">
+<h2 class="text-3xl md:text-5xl font-bold mb-8 md:mb-12 text-center">Калькулятор выгоды</h2>
+<div class="max-w-6xl mx-auto bg-opacity-30 p-4 md:p-16 rounded-xl grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 backdrop-blur-md border border-primary/10" style="background: linear-gradient(135deg, rgba(18,18,18,0.95) 0%, rgba(5,15,45,0.9) 100%); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);">
+<div class="space-y-6 md:space-y-8">
 <div>
-<label class="block mb-4 text-gray-300 text-lg">Количество ключевых слов</label>
-<input type="range" min="50" max="500" value="100" class="calculator-slider w-full" id="keywords-slider">
+<label class="block mb-3 md:mb-4 text-gray-300 text-base md:text-lg">Количество ключевых слов</label>
+<input type="range" min="50" max="500" value="100" class="calculator-slider w-full h-6 md:h-4" id="keywords-slider">
 <div class="flex justify-between mt-2">
-<span class="text-sm text-gray-400 font-medium">50</span>
-<span class="text-sm text-white font-semibold" id="keywords-value">100</span>
-<span class="text-sm text-gray-400 font-medium">500</span>
-</div>
-</div>
-<div>
-<label class="block mb-4 text-gray-300 text-lg">Текущий трафик (посетителей в месяц)</label>
-<input type="range" min="0" max="10000" value="1000" class="calculator-slider w-full" id="traffic-slider">
-<div class="flex justify-between mt-2">
-<span class="text-sm text-gray-400 font-medium">0</span>
-<span class="text-sm text-white font-semibold" id="traffic-value">1&nbsp;000</span>
-<span class="text-sm text-gray-400 font-medium">10000</span>
+<span class="text-xs md:text-sm text-gray-400 font-medium">50</span>
+<span class="text-xs md:text-sm text-white font-semibold" id="keywords-value">100</span>
+<span class="text-xs md:text-sm text-gray-400 font-medium">500</span>
 </div>
 </div>
 <div>
-<label class="block mb-4 text-gray-300 text-lg">Конверсия сайта (%)</label>
-<input type="range" min="0.5" max="5" value="2" step="0.1" class="calculator-slider w-full" id="conversion-slider">
+<label class="block mb-3 md:mb-4 text-gray-300 text-base md:text-lg">Текущий трафик (посетителей в месяц)</label>
+<input type="range" min="0" max="10000" value="1000" class="calculator-slider w-full h-6 md:h-4" id="traffic-slider">
 <div class="flex justify-between mt-2">
-<span class="text-sm text-gray-400 font-medium">0.5%</span>
-<span class="text-sm text-white font-semibold" id="conversion-value">2.0%</span>
-<span class="text-sm text-gray-400 font-medium">5%</span>
+<span class="text-xs md:text-sm text-gray-400 font-medium">0</span>
+<span class="text-xs md:text-sm text-white font-semibold" id="traffic-value">1&nbsp;000</span>
+<span class="text-xs md:text-sm text-gray-400 font-medium">10000</span>
 </div>
 </div>
 <div>
-<label class="block mb-4 text-gray-300 text-lg">Средний чек (₽)</label>
-<input type="range" min="1000" max="100000" value="15000" class="calculator-slider w-full" id="check-slider">
+<label class="block mb-3 md:mb-4 text-gray-300 text-base md:text-lg">Конверсия сайта (%)</label>
+<input type="range" min="0.5" max="5" value="2" step="0.1" class="calculator-slider w-full h-6 md:h-4" id="conversion-slider">
 <div class="flex justify-between mt-2">
-<span class="text-sm text-gray-400 font-medium">1 000 ₽</span>
-<span class="text-sm text-white font-semibold" id="check-value">15&nbsp;000 ₽</span>
-<span class="text-sm text-gray-400 font-medium">100 000 ₽</span>
+<span class="text-xs md:text-sm text-gray-400 font-medium">0.5%</span>
+<span class="text-xs md:text-sm text-white font-semibold" id="conversion-value">2.0%</span>
+<span class="text-xs md:text-sm text-gray-400 font-medium">5%</span>
 </div>
 </div>
-<div class="flex flex-col space-y-4 mt-8">
-<button class="bg-primary hover:bg-blue-600 text-white font-medium py-3 px-8 !rounded-button transition-all whitespace-nowrap w-full" id="calc-form-btn">
+<div>
+<label class="block mb-3 md:mb-4 text-gray-300 text-base md:text-lg">Средний чек (₽)</label>
+<input type="range" min="1000" max="100000" value="15000" class="calculator-slider w-full h-6 md:h-4" id="check-slider">
+<div class="flex justify-between mt-2">
+<span class="text-xs md:text-sm text-gray-400 font-medium">1 000 ₽</span>
+<span class="text-xs md:text-sm text-white font-semibold" id="check-value">15&nbsp;000 ₽</span>
+<span class="text-xs md:text-sm text-gray-400 font-medium">100 000 ₽</span>
+</div>
+</div>
+<div class="flex flex-col space-y-4 mt-6 md:mt-8">
+<button class="bg-primary hover:bg-blue-600 text-white font-medium py-3 px-6 md:px-8 !rounded-button transition-all whitespace-nowrap w-full text-base md:text-lg" id="calc-form-btn">
 Хочу персональный расчет
 </button>
 </div>
 </div>
-<div class="bg-opacity-20 p-8 rounded-xl" style="background-color: rgba(0,87,255,0.05);">
-<h3 class="text-3xl font-bold mb-8">Ваша выгода через 90 дней</h3>
-<div class="space-y-8">
+<div class="bg-opacity-20 p-6 md:p-8 rounded-xl mt-6 md:mt-0" style="background-color: rgba(0,87,255,0.05);">
+<h3 class="text-2xl md:text-3xl font-bold mb-6 md:mb-8">Ваша выгода через 90 дней</h3>
+<div class="space-y-6 md:space-y-8">
 <div>
-<div class="text-gray-400 text-base mb-1">Прирост трафика</div>
-<div class="text-3xl font-bold text-white" id="traffic-growth">+500 посетителей</div>
+<div class="text-gray-400 text-sm md:text-base mb-1">Прирост трафика</div>
+<div class="text-2xl md:text-3xl font-bold text-white" id="traffic-growth">+500 посетителей</div>
 </div>
 <div>
-<div class="text-gray-400 text-base mb-1">Дополнительные клиенты</div>
-<div class="text-3xl font-bold text-white" id="clients-growth">+30 клиентов</div>
+<div class="text-gray-400 text-sm md:text-base mb-1">Дополнительные клиенты</div>
+<div class="text-2xl md:text-3xl font-bold text-white" id="clients-growth">+30 клиентов</div>
 </div>
 <div>
-<div class="text-gray-400 text-base mb-1">Дополнительная выручка</div>
-<div class="text-3xl font-bold text-[#FFBD2E]" id="revenue-growth">+450&nbsp;000 ₽</div>
+<div class="text-gray-400 text-sm md:text-base mb-1">Дополнительная выручка</div>
+<div class="text-2xl md:text-3xl font-bold text-[#FFBD2E]" id="revenue-growth">+450&nbsp;000 ₽</div>
 </div>
 <div>
-<div class="text-gray-400 text-base mb-1">Экономия на SEO</div>
-<div class="text-3xl font-bold text-[#0057FF]" id="seo-savings">+18&nbsp;000 ₽</div>
+<div class="text-gray-400 text-sm md:text-base mb-1">Экономия на SEO</div>
+<div class="text-2xl md:text-3xl font-bold text-[#0057FF]" id="seo-savings">+18&nbsp;000 ₽</div>
 </div>
 </div>
 </div>
@@ -490,7 +500,7 @@ background: linear-gradient(90deg, #000 0%, transparent 50%);
 <section class="py-16 bg-opacity-30" style="background-color: rgba(0,0,0,0.3);" id="cases">
 <div class="container mx-auto px-4">
 <h2 class="text-3xl font-bold mb-10 text-center">Наши кейсы</h2>
-<div class="flex flex-row gap-6 w-full mb-8" id="cases-list-main">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8" id="cases-list-main">
   <!-- Первый кейс -->
   <div class="p-8 rounded-lg h-full min-h-[540px] flex-1 min-w-0 flex flex-col" style="background-color: rgba(0,0,0,0.5); border: 2px solid rgba(255,255,255,0.25);">
     <div class="flex flex-col h-full">
@@ -850,11 +860,23 @@ background: linear-gradient(90deg, #000 0%, transparent 50%);
   <button id="show-more-cases" class="bg-primary hover:bg-[#FF6B3A] text-white font-medium py-4 px-12 !rounded-button transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-primary/20 text-xl">
     Еще кейсы
   </button>
+  <button id="hide-cases" class="bg-primary hover:bg-[#FF6B3A] text-white font-medium py-4 px-12 !rounded-button transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-primary/20 text-xl hidden">
+    Скрыть кейсы
+  </button>
 </div>
 <script>
 document.getElementById('show-more-cases').onclick = function() {
   document.getElementById('hidden-cases').classList.remove('hidden');
-  this.style.display = 'none';
+  this.classList.add('hidden');
+  document.getElementById('hide-cases').classList.remove('hidden');
+};
+
+document.getElementById('hide-cases').onclick = function() {
+  document.getElementById('hidden-cases').classList.add('hidden');
+  this.classList.add('hidden');
+  document.getElementById('show-more-cases').classList.remove('hidden');
+  // Scroll to the cases section
+  document.getElementById('cases').scrollIntoView({ behavior: 'smooth' });
 };
 </script>
 <section class="py-24" id="contact">
